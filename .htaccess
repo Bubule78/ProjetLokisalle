@@ -1,0 +1,9 @@
+# Redirection du site sans www vers www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^alex-russo.fr [NC]
+RewriteRule ^(.*)$ http://www.alex-russo.fr/$1 [L,R=301]
+
+# ON FORCE LE HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
